@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-function Card({name, cost, damage, shield, heal, upgrade}) {
-    // const [characterInfo, setCharacterInfo] = useState(undefined) 
+function Card({id, name, cost, damage, shield, heal, upgrade, handleCardClick}) {
+    
+    const [cardStatus, setCardStatus] = useState(false) 
     // const [maxHP, setMaxHP] = useState(0) 
     // const [currentHP, setCurrentHP] = useState(0) 
 
@@ -11,12 +12,12 @@ function Card({name, cost, damage, shield, heal, upgrade}) {
     //     .then(gameCharArray => setCharacterInfo(gameCharArray[0]));
     // }, []);
 
-    function handleClick() {
-
-    }
-
     return (
-        <div className="card" onClick={handleClick}>
+        <div className="card" onClick={() => handleCardClick(id)}>
+            
+            <h2> 
+                {id ? `id = ${id}` : null}
+            </h2>
             <h2> 
                 {cost ? `cost = ${cost}` : null}
             </h2>

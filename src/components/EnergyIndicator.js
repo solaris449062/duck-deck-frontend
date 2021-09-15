@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-function EnergyIndicator() {
-    const [characterInfo, setCharacterInfo] = useState(undefined) 
-    const [maxEnergy, setMaxEnergy] = useState(0) 
-    const [currentEnergy, setCurrentEnergy] = useState(0) 
+function EnergyIndicator({characterInfo}) {
+    console.log(characterInfo)
 
-    useEffect(() => {
-    fetch("http://localhost:9292/characters")
-        .then((r) => r.json())
-        .then(gameCharArray => setCharacterInfo(gameCharArray[0]));
-    }, []);
-
-
-    // return a hp bar, partially filled up to a point indicated by current HP
     return (
         <div>
             <h2> 
-                {characterInfo ? `Energy = ${characterInfo.current_energy}/${characterInfo.max_energy}` : null}
+                {characterInfo[0] ? `Player Energy = ${characterInfo[0].current_energy}/${characterInfo[0].max_energy}` : "Player Energy"}
+            </h2>
+            <h2>
+               {characterInfo[1] ? `Enemy Energy = ${characterInfo[1].current_energy}/${characterInfo[1].max_energy}` : "Enemy Energy"}
             </h2>
         </div>
     );
