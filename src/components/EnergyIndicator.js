@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-function HpBar() {
+function EnergyIndicator() {
     const [characterInfo, setCharacterInfo] = useState(undefined) 
-    const [maxHP, setMaxHP] = useState(0) 
-    const [currentHP, setCurrentHP] = useState(0) 
+    const [maxEnergy, setMaxEnergy] = useState(0) 
+    const [currentEnergy, setCurrentEnergy] = useState(0) 
 
     useEffect(() => {
     fetch("http://localhost:9292/characters")
@@ -16,11 +16,11 @@ function HpBar() {
     return (
         <div>
             <h2> 
-                {characterInfo ? `HP = ${characterInfo.current_HP}/${characterInfo.max_HP}` : null}
+                {characterInfo ? `Energy = ${characterInfo.current_energy}/${characterInfo.max_energy}` : null}
             </h2>
         </div>
     );
 }
 
 
-export default HpBar;
+export default EnergyIndicator;
