@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.card {
+  background-color: yellowgreen;
+  height: 15em;
+  width: 10em;
+}
