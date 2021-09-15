@@ -1,10 +1,13 @@
 import React from 'react'
-let enemyIMG = ""
+const enemyHp = 
+let enemyIMG = ./images/bandit.jpg
 
-function EnemyPortrait( {name} ) {
+function EnemyPortrait(props) {
    return (
-      <h2>name.props</h2>
+      <h2>props.name</h2>
       <img src = {enemyIMG} alt ='ENEMY'/>
+         //<h3>props.class</h3>
+         //<h3>props.hpbar</h3>
    );
 }
 
