@@ -8,16 +8,18 @@ function App() {
 
   const [characterInfo, setCharacterInfo] = useState("") 
   const [cardInUse, setCardInUse] = useState(undefined)
+  const [cardStatus, setcardStatus] = useState(undefined)
   
   function handleCardClick(id) {
     setCardInUse(id)
+    setcardStatus(!cardStatus)
   }
 
   useEffect(() => {
     fetch(`http://localhost:9292/play_card/${cardInUse}`)
         .then((r) => r.json())
         .then(characterStatusArray => setCharacterInfo(characterStatusArray));
-  }, [cardInUse]);
+  }, [cardStatus]);
 
   useEffect(() => {
   fetch("http://localhost:9292/characters")
