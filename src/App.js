@@ -74,7 +74,6 @@ function App() {
     // console.log(userStatus.max_hp)
     // if win/lose condition is met, let the player win/lose
     // update character data to the database
-
   }
 
 
