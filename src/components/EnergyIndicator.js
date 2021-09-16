@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function EnergyIndicator({characterInfo}) {
-    console.log(characterInfo)
+    // console.log(characterInfo)
 
     return (
         <div className="energy_indicator">
