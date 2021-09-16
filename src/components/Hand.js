@@ -16,7 +16,7 @@ function Hand({handleCardClick}) {
     return (
         <div className="hand">
             {hand ? hand.map(card =>                 
-                <Card 
+                <Card
                     key={card.id}
                     id={card.id}
                     name={card.name}

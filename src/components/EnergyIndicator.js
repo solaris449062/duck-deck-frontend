@@ -4,7 +4,7 @@ function EnergyIndicator({characterInfo}) {
     console.log(characterInfo)
 
     return (
-        <div>
+        <div className="energy_indicator">
             <h2> 
                 {characterInfo[0] ? `Player Energy = ${characterInfo[0].current_energy}/${characterInfo[0].max_energy}` : "Player Energy"}
             </h2>
