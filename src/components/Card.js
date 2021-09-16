@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function Card({id, name, cost, damage, shield, heal, upgrade, handleCardClick}) {
     
-    const [cardStatus, setCardStatus] = useState(false) 
+    // const [cardStatus, setCardStatus] = useState(false) 
     // const [maxHP, setMaxHP] = useState(0) 
     // const [currentHP, setCurrentHP] = useState(0) 
 
