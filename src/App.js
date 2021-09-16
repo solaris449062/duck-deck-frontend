@@ -7,11 +7,14 @@ import EndTurn from './components/EndTurn';
 
 function App() {
 
+
   const [characterInfo, setCharacterInfo] = useState([]) 
   const [allCards, setAllCards] = useState(undefined) 
   const [cardInUse, setCardInUse] = useState(undefined)
   const [cardStatus, setcardStatus] = useState(undefined)
-  const [turnCounter, setTurnCounter] = useState(0)
+  const [turnCounter, setTurnCounter] = useState(1)
+  const [gameStatus, setGameStatus] = useState(`Turn ${turnCounter}`) 
+  const [winStatus, setWinStatus] = useState("") 
 
   function handleCardClick(id) {
     setCardInUse(id)
@@ -21,22 +24,48 @@ function App() {
   function handleEndTurn() {
     console.log("hi")
     setTurnCounter(turnCounter + 1)
+    setGameStatus(`Turn ${turnCounter}`)
     console.log(turnCounter)
+  }
+
+  function gameStatusMessage() {
+    return (
+      <>
+        <h1 className="game_status_message">
+          {gameStatus}
+        </h1>
+        <h1 className="game_status_message">
+          {winStatus}
+        </h1>
+      </>  
+    )
   }
 
   // ending turn and enemy turn begins
   useEffect(() => {
     fetch("http://localhost:9292/end_turn")
         .then((r) => r.json())
-        .then(characterStatusArray => setCharacterInfo(characterStatusArray))
-        .then(() => console.log("turn ended"));
+        .then(characterStatusArray => {
+          setCharacterInfo(characterStatusArray)
+          if (characterStatusArray[0].current_HP <= 0) {
+            console.log("You Died")
+            setWinStatus("You Died")
+          }
+        })
+        .then(() => console.log("turn ended"))
   }, [turnCounter]);
 
   // player using card
   useEffect(() => {
     fetch(`http://localhost:9292/play_card/${cardInUse}`)
         .then((r) => r.json())
-        .then(characterStatusArray => setCharacterInfo(characterStatusArray));
+        .then(characterStatusArray => {
+          setCharacterInfo(characterStatusArray)
+          if (characterStatusArray[1].current_HP <= 0) {
+            setWinStatus("You Win!")
+          }
+        });
+    
   }, [cardStatus]);
 
   // player using card at front-end
@@ -86,6 +115,7 @@ function App() {
         handCards={handCards}
       />
       <EndTurn handleEndTurn={handleEndTurn}/>
+      {gameStatusMessage()}
     </div>
   );
 }
