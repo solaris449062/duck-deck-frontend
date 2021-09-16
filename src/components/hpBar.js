@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function HpBar({characterInfo}) {
-    console.log(characterInfo)
+    // console.log(characterInfo)
 
     // return a hp bar, partially filled up to a point indicated by current HP
     return (

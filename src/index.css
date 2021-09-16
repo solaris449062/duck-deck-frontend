@@ -12,8 +12,34 @@ code {
     monospace;
 }
 
+
+.hand {
+  background-color: rgb(49, 49, 175);
+  height: 17em;
+  width: 80em;
+  display: flex;
+  gap: 1em;
+  margin: 1em;
+  align-content: space-around
+}
+
 .card {
-  background-color: yellowgreen;
+  background-color: rgb(153, 46, 46);
   height: 15em;
   width: 10em;
+  margin: 1em;
+  text-align: center;
+  display: flexbox;
+}
+
+.end_turn {
+  background-color: red;
+  height: 4em;
+  width: 10em;
+}
+
+.energy_indicator {
+  background-color: goldenrod;
+  height: 8em;
+  width: 15em;
 }
