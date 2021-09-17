@@ -44,29 +44,34 @@ code {
 
 .end_turn {
   background-color: red;
-  height: 4em;
+  height: 2.5em;
   width: 10em;
+  text-align: center;
 }
 
 .hp_indicator {
   background-color: rgb(190, 57, 57);
-  height: 8em;
+  height: 6em;
   width: 15em;
+  text-align: center;
 }
 .shield_indicator {
   background-color: rgb(58, 202, 113);
-  height: 8em;
+  height: 6em;
   width: 15em;
+  text-align: center;
 }
 
 .energy_indicator {
   background-color: goldenrod;
-  height: 8em;
+  height: 6em;
   width: 15em;
+  text-align: center;
 }
 
 .restart {
   background-color: rgb(170, 180, 28);
-  height: 4em;
+  height: 2.5em;
   width: 10em;
+  text-align: center;
 }

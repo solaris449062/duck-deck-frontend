@@ -15,9 +15,9 @@ function Card({id, name, cost, damage, shield, heal, upgrade, handleCardClick}) 
     return (
         <div className="card" onClick={() => handleCardClick(id)}>
             
-            <h2> 
+            {/* <h2> 
                 {id ? `id = ${id}` : null}
-            </h2>
+            </h2> */}
 
             <h2> 
                 {name ? name : null}

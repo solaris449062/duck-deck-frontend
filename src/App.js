@@ -9,13 +9,13 @@ import Restart from './components/Restart';
 
 function App() {
 
-
   const [characterInfo, setCharacterInfo] = useState([]) 
   const [allCards, setAllCards] = useState(undefined) 
   const [cardInUse, setCardInUse] = useState(undefined)
   const [cardUseStatus, setCardUseStatus] = useState(0)
   const [cardAddStatus, setCardAddStatus] = useState(0)
   const [turnCounter, setTurnCounter] = useState(1)
+  const [turnCounterNoReset, setTurnCounterNoReset] = useState(0)
   const [gameStatus, setGameStatus] = useState(`Turn ${turnCounter}`) 
   const [winStatus, setWinStatus] = useState("") 
   const [restartStatus, setRestartStatus] = useState(0) 
@@ -29,6 +29,7 @@ function App() {
   function handleEndTurn() {
     console.log("function handleEndTurn called")
     setTurnCounter(turnCounter + 1)
+    setTurnCounterNoReset(turnCounterNoReset + 1)
     setGameStatus(`Turn ${turnCounter}`) // need to fix this part with callback function
     console.log(turnCounter)
   }
@@ -58,7 +59,7 @@ function App() {
           }
         })
         .then(() => console.log("turn ended"))
-  }, [turnCounter]);
+  }, [turnCounterNoReset]);
 
   // player using card
   useEffect(() => {
@@ -206,6 +207,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Deck Building Card Game</h1>
       <HpBar characterInfo={characterInfo}/>
       <EnergyIndicator characterInfo={characterInfo}/>
       <Hand 
