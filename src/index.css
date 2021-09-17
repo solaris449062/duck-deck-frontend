@@ -23,6 +23,16 @@ code {
   align-content: space-around
 }
 
+.deck {
+  background-color: rgb(49, 175, 143);
+  height: 17em;
+  width: 80em;
+  display: flex;
+  gap: 1em;
+  margin: 1em;
+  align-content: space-around
+}
+
 .card {
   background-color: rgb(153, 46, 46);
   height: 15em;
