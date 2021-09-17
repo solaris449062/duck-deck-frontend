@@ -12,6 +12,12 @@ function HpBar({characterInfo}) {
             <h2>
                {characterInfo[1] ? `Enemy HP = ${characterInfo[1].current_HP}/${characterInfo[1].max_HP}` : "Enemy HP"}
             </h2>
+            <h2> 
+                {characterInfo[0] ? `Player Shield = ${characterInfo[0].shield}` : "Player Shield"}
+            </h2>
+            <h2>
+               {characterInfo[1] ? `Enemy Shield = ${characterInfo[1].shield}` : "Enemy Shield"}
+            </h2>
         </div>
     );
 }
