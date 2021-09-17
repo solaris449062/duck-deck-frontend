@@ -38,6 +38,17 @@ code {
   width: 10em;
 }
 
+.hp_indicator {
+  background-color: rgb(190, 57, 57);
+  height: 8em;
+  width: 15em;
+}
+.shield_indicator {
+  background-color: rgb(58, 202, 113);
+  height: 8em;
+  width: 15em;
+}
+
 .energy_indicator {
   background-color: goldenrod;
   height: 8em;
