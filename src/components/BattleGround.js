@@ -6,10 +6,12 @@ import hpBar from ./hpBar
 
 
 
-fucntion BattleGround(){
+fucntion BattleGround( {} ){
   return(
     <div className='Battleground'>  
+      <span>
       </hpBar>
+      </span>
       <div>
       </PlayerPortrait>
       </div>
