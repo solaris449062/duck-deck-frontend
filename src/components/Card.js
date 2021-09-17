@@ -34,7 +34,7 @@ function Card({id, name, cost, damage, shield, heal, upgrade, handleCardClick}) 
             <h2> 
                 {shield ? `shield = ${shield}` : null}
             </h2>
-            
+
             <h2> 
                 {heal ? `heal = ${heal}` : null}
             </h2>
