@@ -3,6 +3,7 @@ import HpBar from './components/hpBar';
 import EnergyIndicator from './components/EnergyIndicator';
 import Hand from './components/Hand'
 import EndTurn from './components/EndTurn';
+import Restart from './components/Restart';
 
 
 function App() {
@@ -11,20 +12,21 @@ function App() {
   const [characterInfo, setCharacterInfo] = useState([]) 
   const [allCards, setAllCards] = useState(undefined) 
   const [cardInUse, setCardInUse] = useState(undefined)
-  const [cardStatus, setcardStatus] = useState(undefined)
+  const [cardStatus, setcardStatus] = useState(0)
   const [turnCounter, setTurnCounter] = useState(1)
   const [gameStatus, setGameStatus] = useState(`Turn ${turnCounter}`) 
   const [winStatus, setWinStatus] = useState("") 
+  const [restartStatus, setRestartStatus] = useState(0) 
 
   function handleCardClick(id) {
     setCardInUse(id)
-    setcardStatus(!cardStatus)
+    setcardStatus(cardStatus + 1)
   }
 
   function handleEndTurn() {
     console.log("hi")
     setTurnCounter(turnCounter + 1)
-    setGameStatus(`Turn ${turnCounter}`)
+    setGameStatus(`Turn ${turnCounter}`) // need to fix this part with callback function
     console.log(turnCounter)
   }
 
@@ -98,13 +100,42 @@ function App() {
     // take action according to the card
     console.log(characterInfo)
     // console.log(characterInfo[0])
-    console.log(userStatus.max_HP) // this sometimes returns error and sometimes doesn't. WHY??
+    console.log(userStatus.max_HP) 
     console.log(targetStatus)
     // console.log(userStatus.max_hp)
     // if win/lose condition is met, let the player win/lose
     // update character data to the database
   }
 
+  // game start over
+
+  function gameRestart(character) {
+    fetch(`http://localhost:9292/characters/${character.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        current_energy: character.max_energy,
+        current_HP: character.max_HP,
+        shield: 0,
+      }),
+    })
+      .then((r) => r.json())
+      .then(json => console.log(json))
+  }
+
+  function handleRestart() {
+    setRestartStatus(restartStatus + 1)
+  }
+
+  // restart useEffect
+  useEffect(() => {
+    characterInfo.forEach(character => {
+      gameRestart(character)
+      setTurnCounter(1)
+    })
+  }, [restartStatus]);
 
   return (
     <div className="App">
@@ -116,6 +147,7 @@ function App() {
       />
       <EndTurn handleEndTurn={handleEndTurn}/>
       {gameStatusMessage()}
+      <Restart handleRestart={handleRestart}/>
     </div>
   );
 }

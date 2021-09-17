@@ -43,3 +43,9 @@ code {
   height: 8em;
   width: 15em;
 }
+
+.restart {
+  background-color: rgb(170, 180, 28);
+  height: 4em;
+  width: 10em;
+}
